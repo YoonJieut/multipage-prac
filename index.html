@@ -62,17 +62,21 @@
 <body>
   <div id="root">
     <div>
-      <p>반갑습니다 <span id="spanTag">1초 뒤</span> 페이지가 나타납니다.</p>
-      <a href="http://localhost:8080/sub">서브 페이지로 이동</a>
+      <p>반갑습니다 <span id="spanTag">5초</span> 페이지가 나타납니다.</p>
+      <a id="button" href="http://localhost:8080/sub">서브 페이지로 이동</a>
     </div>
   </div>
   <script>
     const span = document.getElementById('spanTag')
+    const aTag = document.getElementById('button');
+    console.log(span);
+    console.log(span.textContent);
 
     function timer(num){
       if(typeof(num) === "number"){
         let timerId = setInterval(function(){
           span.textContext = `${num}초 뒤`;
+          console.log('timing..');
           if(num === 0){
             clearInterval(timerId);
           }
@@ -80,7 +84,8 @@
         },1000);
       }
     }
-    timer(5);
+    aTag.addEventListener('click',function(){timer(5)});
+    
   </script>
 </body>
 </html>
